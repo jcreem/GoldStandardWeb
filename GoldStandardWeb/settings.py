@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-#    'generator.apps.GeneratorConfig',
     'generator',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_settings',
 
 )
 
@@ -84,3 +84,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+DJANGO_SETTINGS = {
+   'generator_output_directory': ('String', '/tmp'),
+   'generator_JSON_key_file': ('String', '/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json'),
+   'generator_gs_tools_path': ('String', '/'),
+}

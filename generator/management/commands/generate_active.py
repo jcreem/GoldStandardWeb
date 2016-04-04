@@ -1,8 +1,27 @@
 from django.core.management.base import BaseCommand, CommandError
+import django_settings
+import sys
+
+sys.path.append(django_settings.get('generator_gs_tools_path'))
+
 from generator.models import GoldStandard, ActiveGoldStandard
 from gs_tools import gs_collab_sheet
-import generate
+from gs_tools.reportlab_goldstandard import generate
 import os
+import errno
+
+import gs_tools.pdf_to_png
+import zipfile
+
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -10,7 +29,13 @@ class Command(BaseCommand):
         #
         # Get the list of active Goldstandards and generate each one
         #
-        os.chdir('/tmp')
+        Directory=django_settings.get('generator_output_directory',\
+          default='/tmp')
+        mkdir_p(Directory)
+        os.chdir(Directory)
+
+
+        JSON_Key_File=django_settings.get('generator_JSON_key_file')
 
         for Active in ActiveGoldStandard.objects.all():
 
@@ -22,15 +47,26 @@ class Command(BaseCommand):
                 GS_Title= GS_House +
                 ' SESSION - ' + GS_Title_Date,
                 Filename=Active.goldstandard.get_pdf_name(Gold_Background = False),
-                JSON_Key_File='/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json',
+                JSON_Key_File=JSON_Key_File,
                 Background_Color=generate.White,
                 )
+
+
 
             gs_collab_sheet.Create_Goldstandard_From_Sheet(
                 Sheet_URL=Active.goldstandard.google_sheet_url,
                 GS_Title= GS_House +
                 ' SESSION - ' + GS_Title_Date,
                 Filename=Active.goldstandard.get_pdf_name(Gold_Background = True),
-                JSON_Key_File='/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json',
+                JSON_Key_File=JSON_Key_File,
                 Background_Color=generate.Gold,
                 )
+
+            Image_List = gs_tools.pdf_to_png.Convert(Active.goldstandard.get_pdf_name\
+              (Gold_Background = True))
+
+            Zip_Name=Active.goldstandard.get_pdf_name(Gold_Background = True)
+            Zip_Name=Zip_Name + ".zip"
+            with zipfile.ZipFile(Zip_Name, 'w') as myzip:
+                for Image in Image_List:
+                    myzip.write(Image)

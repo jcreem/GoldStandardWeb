@@ -70,3 +70,6 @@ class Command(BaseCommand):
             with zipfile.ZipFile(Zip_Name, 'w') as myzip:
                 for Image in Image_List:
                     myzip.write(Image)
+
+            for Image_File in Image_List:
+                os.remove(Image_File)

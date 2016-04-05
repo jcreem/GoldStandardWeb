@@ -89,8 +89,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+#
+# This configures the DJANGO_SETTINGS module. To be clear
+# this is not a built in capability of DJANGO but rather
+# is an add on-module generally available via
+# pip or the distribution package manager called django-settings
+# 
+# https://github.com/jqb/django-settings
+# After adding to this list you need to do:
+#  ./manage.py settings_initialize
+#
 DJANGO_SETTINGS = {
    'generator_output_directory': ('String', '/tmp'),
+   'generator_http_server_relative_directory':('String', '/tmp'),
    'generator_JSON_key_file': ('String', '/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json'),
    'generator_gs_tools_path': ('String', '/'),
 }

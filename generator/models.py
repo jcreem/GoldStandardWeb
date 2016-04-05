@@ -46,7 +46,17 @@ class ActiveGoldStandard(models.Model):
     goldstandard = models.OneToOneField(GoldStandard, on_delete=models.CASCADE)
 
     Draft_Number = models.IntegerField(default=1)
-    
+    Gold_PDF_Server_Name = models.CharField(
+      max_length=180,
+      default='')
+
+    White_PDF_Server_Name = models.CharField(
+      max_length=180,
+      default='')
+    ZIP_File_Server_Name  = models.CharField(
+      max_length=180,
+      default='')
+
     def __unicode__(self):
         return self.goldstandard.__unicode__()
 

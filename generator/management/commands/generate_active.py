@@ -91,3 +91,21 @@ class Command(BaseCommand):
 
             for Image_File in Image_List:
                 os.remove(Image_File)
+
+            #
+            # Put the path info (web server relative) into the database
+            #
+            Server_Relative_Prefix=Directory=django_settings.get(
+              'generator_http_server_relative_directory',\
+              default='/tmp')
+
+            Active.Gold_PDF_Server_Name = Server_Relative_Prefix + '/' + \
+                Active.goldstandard.get_pdf_name(Gold_Background = True)
+
+            Active.White_PDF_Server_Name = Server_Relative_Prefix + '/' + \
+                Active.goldstandard.get_pdf_name(Gold_Background = False)
+
+            Active.ZIP_File_Server_Name = Server_Relative_Prefix + '/' + \
+                Zip_Name
+
+            Active.save()

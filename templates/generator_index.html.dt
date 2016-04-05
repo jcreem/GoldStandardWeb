@@ -1,0 +1,14 @@
+<html>
+<title>Gold Standard Generator</title>
+<body>
+
+<ul>
+
+{% for gs in ActiveStandardList %}
+  <li> {{gs}}</li>
+{% endfor %}
+
+</ul>
+
+</body>
+</html>

@@ -45,6 +45,8 @@ class GoldStandard(models.Model):
 class ActiveGoldStandard(models.Model):
     goldstandard = models.OneToOneField(GoldStandard, on_delete=models.CASCADE)
 
+    Draft_Number = models.IntegerField(default=1)
+    
     def __unicode__(self):
         return self.goldstandard.__unicode__()
 

@@ -83,7 +83,7 @@ class Command(BaseCommand):
             # Put the images into a zip file and then delete the individual
             # images
             #
-            Zip_Name=Active.goldstandard.get_pdf_name(Gold_Background = True)
+            Zip_Name, Discard = os.path.splitext(Active.goldstandard.get_pdf_name(Gold_Background = True))
             Zip_Name=Zip_Name + ".zip"
             with zipfile.ZipFile(Zip_Name, 'w') as myzip:
                 for Image in Image_List:

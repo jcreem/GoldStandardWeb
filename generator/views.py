@@ -16,12 +16,12 @@ def index(request):
     #
     ActiveStandardList=[]
     for Active in ActiveGoldStandard.objects.all():
-        ActiveStandardList.append(
-            (Active.goldstandard.get_gen_court_house_display(),
-             Active.goldstandard.session_date.strftime('%A, %B %-d, %Y'),
-             Active.Gold_PDF_Server_Name,
-             Active.White_PDF_Server_Name,
-             Active.ZIP_File_Server_Name))
+        GS_Dict={'House': Active.goldstandard.get_gen_court_house_display(),
+                 'Date' : Active.goldstandard.session_date.strftime('%A, %B %-d, %Y'),
+                 'Gold_PDF'  : Active.Gold_PDF_Server_Name,
+                 'White_PDF' : Active.White_PDF_Server_Name,
+                 'ZIP_File'  : Active.ZIP_File_Server_Name}
+        ActiveStandardList.append(GS_Dict)
     t=get_template('generator_index.html.dt')
     html=t.render(Context({'ActiveStandardList':ActiveStandardList}))
     return HttpResponse(html)

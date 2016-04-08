@@ -62,7 +62,7 @@ class Command(BaseCommand):
 
 
 
-            gs_collab_sheet.Create_Goldstandard_From_Sheet(
+            GS_Info = gs_collab_sheet.Create_Goldstandard_From_Sheet(
                 Sheet_URL=Active.goldstandard.google_sheet_url,
                 GS_Title= GS_House +
                 ' SESSION - ' + GS_Title_Date,
@@ -109,3 +109,5 @@ class Command(BaseCommand):
                 Zip_Name
 
             Active.save()
+
+            print GS_Info

@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.template import Template, Context
 
 from generator.models import GoldStandard, ActiveGoldStandard
-
+from django.core.management import call_command
 
 #def index(request):
 #    return HttpResponse("Hello, world. You're at the Generator index.")
@@ -25,3 +25,7 @@ def index(request):
     t=get_template('generator_index.html.dt')
     html=t.render(Context({'ActiveStandardList':ActiveStandardList}))
     return HttpResponse(html)
+
+def do_generate_active(request):
+    call_command('generate_active')
+    return HttpResponse()

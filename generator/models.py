@@ -15,6 +15,10 @@ class GoldStandard(models.Model):
 
     session_date = models.DateField('session date')
     google_sheet_url = models.URLField('google sheet url')
+    gen_court_calendar_url = models.URLField(
+        'NH General Court Calendar URL',\
+        default="http://www.gencourt.state.nh.us/")
+        
     gen_court_house = models.CharField(max_length=3,
                                        choices=GEN_COURT_HOUSE_CHOICES,
                                        default=HOUSE)

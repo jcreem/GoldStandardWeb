@@ -1,10 +1,4 @@
 from django.db import models
-import django_settings
-
-class Text(django_settings.db.Model):
-    value=models.TextField()
-    class Meta:
-        abstract= True
 
 
 class GoldStandard(models.Model):
@@ -64,4 +58,3 @@ class ActiveGoldStandard(models.Model):
     def __unicode__(self):
         return self.goldstandard.__unicode__()
 
-django_settings.register(Text)

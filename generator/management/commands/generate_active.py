@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
-import django_settings
 import sys
+from constance import config
 
-sys.path.append(django_settings.get('generator_gs_tools_path'))
+sys.path.append(config.generator_gs_tools_path)
 
 from generator.models import GoldStandard, ActiveGoldStandard
 from gs_tools import gs_collab_sheet
@@ -37,13 +37,12 @@ class Command(BaseCommand):
         #
         # Get the list of active Goldstandards and generate each one
         #
-        Directory=django_settings.get('generator_output_directory',\
-          default='/tmp')
+        Directory=config.generator_output_directory
         mkdir_p(Directory)
         os.chdir(Directory)
 
 
-        JSON_Key_File=django_settings.get('generator_JSON_key_file')
+        JSON_Key_File=config.generator_JSON_key_file
         print JSON_Key_File
         os.putenv("GOOGLE_APPLICATION_CREDENTIALS", JSON_Key_File)
         for Active in ActiveGoldStandard.objects.all():
@@ -95,9 +94,7 @@ class Command(BaseCommand):
             #
             # Put the path info (web server relative) into the database
             #
-            Server_Relative_Prefix=Directory=django_settings.get(
-              'generator_http_server_relative_directory',\
-              default='/tmp')
+            Server_Relative_Prefix=Directory=config.generator_http_server_relative_directory
 
             Active.Gold_PDF_Server_Name = Server_Relative_Prefix + '/' + \
                 Active.goldstandard.get_pdf_name(Gold_Background = True)

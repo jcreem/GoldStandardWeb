@@ -40,8 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_settings',
-
+    'constance',
+    'constance.backends.database',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,8 +64,12 @@ WSGI_APPLICATION = 'GoldStandardWeb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gsdb',
+        'USER': 'gsuser',
+        'PASSWORD': 'pY8fTPTgAVCTctAP4fg2',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -87,6 +91,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/vhosts/nhla.thecreems.com/static'
 
 
 #
@@ -99,9 +104,25 @@ STATIC_URL = '/static/'
 # After adding to this list you need to do:
 #  ./manage.py settings_initialize
 #
-DJANGO_SETTINGS = {
-   'generator_output_directory': ('String', '/tmp'),
-   'generator_http_server_relative_directory':('String', '/tmp'),
-   'generator_JSON_key_file': ('String', '/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json'),
-   'generator_gs_tools_path': ('String', '/'),
+#DJANGO_SETTINGS = {
+#   'generator_output_directory': ('String', '/tmp'),
+#   'generator_http_server_relative_directory':('String', '/tmp'),
+#   'generator_JSON_key_file': ('String', '/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json'),
+#   'generator_gs_tools_path': ('String', '/'),
+#}
+
+CONSTANCE_CONFIG = {
+   'generator_output_directory': ('/tmp', 'Where to store the PDF files', str),
+   'generator_http_server_relative_directory':('/tmp', 'How to find the PDF files relative to the HTTP Server root', str),
+   'generator_JSON_key_file': ('/home/nhla/NHLAGS-e8b3911072d5.json','Location of Google sheets json', str),
+   'generator_gs_tools_path': ('/', 'Directory containing gs_tools',str),
 }
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+#CONSTANCE_REDIS_CONNECTION = {
+#    'host': 'localhost',
+#    'port': 6379,
+#    'db': 0,
+#}
+#
+#CONSTANCE_REDIS_CONNECTION_CLASS = 'redis_cache.get_redis_connection'

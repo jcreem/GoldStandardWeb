@@ -43,8 +43,8 @@ class Command(BaseCommand):
 
 
         JSON_Key_File=config.generator_JSON_key_file
-        print JSON_Key_File
-        os.putenv("GOOGLE_APPLICATION_CREDENTIALS", JSON_Key_File)
+#        print JSON_Key_File
+#        os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= JSON_Key_File
         for Active in ActiveGoldStandard.objects.all():
 
             GS_Title_Date=Active.goldstandard.session_date.strftime('%A, %B %-d, %Y')

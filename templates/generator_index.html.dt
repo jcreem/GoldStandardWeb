@@ -2,17 +2,25 @@
 <title>Gold Standard Generator</title>
 <body>
 
+<b>Currently Active Gold Standards</b>
 <ul>
 
+
 {% for gs in ActiveStandardList %}
-  <li> {{gs.House}} - {{gs.Date}} <a href={{gs.sheet_url}}>Google Sheet</a> <a href={{gs.Gold_PDF}}>Gold</a>
-    <a href={{gs.White_PDF}}>White</a>
-    <a href={{gs.ZIP_File}}>Zip</a>
-    <a href={{gs.regen_url}}>Regenerate</a>
+  <li> {{gs.House}} - {{gs.Date}} 
+  <ul>
+    <li><a href={{gs.sheet_url}}>Google Sheet</a></li>
+    <li><a href={{gs.Gold_PDF}}>Gold PDF</a></li>
+    <li><a href={{gs.White_PDF}}>White PDF</a></li>
+    <li><a href={{gs.ZIP_File}}>Zip Images</a></li>
+    <li><a href={{gs.regen_url}}>Regenerate</a></li>
+  </ul>
   </li>
 {% endfor %}
 
 </ul>
 
+
+<a href=/admin>Admin Interface</a>
 </body>
 </html>

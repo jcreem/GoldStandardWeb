@@ -4,12 +4,14 @@ import errno
 import zipfile
 
 from django.core.management.base import BaseCommand, CommandError
-import django_settings
+
+from constance import config
+
+sys.path.append(config.generator_gs_tools_path)
 
 from django.template.loader import get_template
 from django.template import Template, Context
 
-sys.path.append(django_settings.get('generator_gs_tools_path'))
 
 from generator.models import GoldStandard, ActiveGoldStandard
 from gs_tools import gs_collab_sheet
@@ -51,6 +53,6 @@ class Command(BaseCommand):
                      'calendar_url' : Active.goldstandard.gen_court_calendar_url}
 
             t=get_template('generator_gslist_email.txt.dt')
-            email_body=t.render(Context({'gs':GS_Dict}))
+            email_body=t.render({'gs':GS_Dict})
 
             print email_body

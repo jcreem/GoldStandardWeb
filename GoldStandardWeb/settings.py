@@ -94,6 +94,11 @@ CONSTANCE_CONFIG = {
    'generator_House_GS_Print_Copies': (300, 'Number of copies to get printed for House GS',int),
    'generator_Printer_Pickup_Time':('7:30AM','Time that we want printer to have GS ready',str),
    'generator_Requestor_Name' : ('Jeff',"Name to use to close out GS related emails.",str),
+   'generator_png_dpi':(90,"Dots per inch of generated PNG files for the Gold Standard",int),
+   'generator_gs_production_email_to':('test@test.com', \
+     "List of comma separated addresses to email to have Gold Standard printed", str),
+   'generator_gs_production_email_cc':('test1@test.com, test2@test.com', \
+     "List of comma separated addresses to CC email when Gold Standard printed", str)
 }
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'

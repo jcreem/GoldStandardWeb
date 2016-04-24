@@ -1,9 +1,9 @@
 Good Morning!
 
-I'd like to order {{gs.copies}} of the attached file for pick-up this morning ({{gs.Date_String}}) by 7:30AM if possible
+I'd like to order {{gs.Copies}} of the attached file for pick-up this morning ({{gs.Date_String}}) by {{gs.Pick_Up_Time}} if possible
 
 Goldenrod paper, letter sized, double sided, scaled to fit.
 
 Thank you,
 
-{{gs.requestor_name }}
+{{gs.Requestor_Name }}

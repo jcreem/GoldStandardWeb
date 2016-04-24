@@ -8,24 +8,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = (
-  os.path.join(BASE_DIR,'templates'),
-)
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '59&&jx0d9u8cnm92+*vkh!gesfc@!*n4$+d74vr+^o)a&dp@ln'
+with open('/etc/django_keys/generator_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+#TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -87,35 +84,16 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/vhosts/nhla.thecreems.com/static'
-
-
-#
-# This configures the DJANGO_SETTINGS module. To be clear
-# this is not a built in capability of DJANGO but rather
-# is an add on-module generally available via
-# pip or the distribution package manager called django-settings
-# 
-# https://github.com/jqb/django-settings
-# After adding to this list you need to do:
-#  ./manage.py settings_initialize
-#
-#DJANGO_SETTINGS = {
-#   'generator_output_directory': ('String', '/tmp'),
-#   'generator_http_server_relative_directory':('String', '/tmp'),
-#   'generator_JSON_key_file': ('String', '/home/jcreem/nhla/gs_tools/NHLAGS-e8b3911072d5.json'),
-#   'generator_gs_tools_path': ('String', '/'),
-#}
 
 CONSTANCE_CONFIG = {
-   'generator_output_directory': ('/tmp', 'Where to store the PDF files', str),
-   'generator_http_server_relative_directory':('/tmp', 'How to find the PDF files relative to the HTTP Server root', str),
+   'generator_output_directory': ('/', 'Where to store the PDF files', str),
+   'generator_http_server_relative_directory':('/', 'How to find the PDF files relative to the HTTP Server root', str),
    'generator_JSON_key_file': ('/home/nhla/NHLAGS-e8b3911072d5.json','Location of Google sheets json', str),
-   'generator_gs_tools_path': ('/', 'Directory containing gs_tools',str),
+   'generator_gs_tools_path': ('/', 'Directory containing gs_tools directory/package',str),
+   'generator_Senate_GS_Print_Copies': (60, 'Number of copies to get printed for Senate GS',int),
+   'generator_House_GS_Print_Copies': (300, 'Number of copies to get printed for House GS',int),
+   'generator_Printer_Pickup_Time':('7:30AM','Time that we want printer to have GS ready',str),
+   'generator_Requestor_Name' : ('Jeff',"Name to use to close out GS related emails.",str),
 }
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
@@ -126,3 +104,39 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 #}
 #
 #CONSTANCE_REDIS_CONNECTION_CLASS = 'redis_cache.get_redis_connection'
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/html/static'
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+MY_TEMPLATE_DIRS = os.path.join(BASE_DIR,'templates')
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [MY_TEMPLATE_DIRS,
+            # insert your TEMPLATE_DIRS here
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

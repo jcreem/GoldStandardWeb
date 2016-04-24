@@ -2,6 +2,19 @@ from django.core.management.base import BaseCommand, CommandError
 import sys
 from constance import config
 
+#
+# We add to to python path here the path of the folder that contains
+# the gs_tools gold standard generation package. Another option would have been
+# have to include this info in the WGSI configuration files. The line that
+# adds config.generator_gs_tools_path makes sense and is a reasonable choice
+# for path management. The part where we add /gs_tools below seems a bit
+# broken to me. What happens withtout it is that we find the items we
+# explicitly import below (gs_collab_sheet, etc) but they fail to find
+# 'colocated' items within the python package like the generator specific
+# bill.py file. Presumably this is a lack of understanding on my part about
+# WGSI interaction with things like the python package system.
+#
+sys.path.append(config.generator_gs_tools_path + '/gs_tools')
 sys.path.append(config.generator_gs_tools_path)
 
 from generator.models import GoldStandard, ActiveGoldStandard

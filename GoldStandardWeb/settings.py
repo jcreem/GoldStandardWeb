@@ -8,6 +8,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+#
+# We've made a choice here. Not a great choice for a large scalable website
+# but probably file for here. The Settings file often needs to contain
+# 'sensative' values like database passwords or the django secret key.
+# Generally these ar placed directly in settings which is fine until someone
+# commits the file to a semi-public repository someplace or even just has
+# a copy sitting around on their local machine that gets compromised. So
+# we store senative values in a config file intended to be unique to the
+# server or development setup being used to reduce that risk. It does meaning
+# more overhead when settings is invoked.
+#
+import ConfigParser
+
+config = ConfigParser.ConfigParser()
+config.read('/etc/django_keys/django.cfg')
+
+
+
 
 
 
@@ -16,9 +34,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/etc/django_keys/generator_key.txt') as f:
-    SECRET_KEY = f.read().strip()
 
+SECRET_KEY=config.get("Generator","SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -59,10 +76,10 @@ WSGI_APPLICATION = 'GoldStandardWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-        'NAME'     : 'gsdb',
-        'USER'     : 'gsuser',
-        'PASSWORD' : 'pY8fTPTgAVCTctAP4fg2',
-        'HOST'     : 'localhost',
+        'NAME'     : config.get("Generator","DATABASE_NAME"),
+        'USER'     : config.get("Generator","DATABASE_USER"),
+        'PASSWORD' : config.get('Generator',"DATABASE_PASSWORD"),
+        'HOST'      : config.get('Generator',"DATABASE_HOST"),
         'PORT'     : '',
     }
 }
@@ -187,9 +204,9 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/html/static'
 
+STATIC_URL=config.get("Generator","STATIC_URL")
+STATIC_ROOT=config.get("Generator","STATIC_ROOT")
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))

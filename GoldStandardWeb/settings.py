@@ -98,7 +98,9 @@ CONSTANCE_CONFIG = {
    'generator_gs_production_email_to':('test@test.com', \
      "List of comma separated addresses to email to have Gold Standard printed", str),
    'generator_gs_production_email_cc':('test1@test.com, test2@test.com', \
-     "List of comma separated addresses to CC email when Gold Standard printed", str)
+     "List of comma separated addresses to CC email when Gold Standard printed", str),
+   'generator_gs_collab_email_to':('test@test.com', \
+     "List of comma separated addresses to send Gold Standard Collaboration email to", str),
 }
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'

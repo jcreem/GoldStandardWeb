@@ -10,6 +10,7 @@
   <li> {{gs.House}} - {{gs.Date}}
   <ul>
     <li><a href={{gs.sheet_url}}>Google Sheet</a></li>
+    <li><a href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank">Email Gold Standard Collaborators</a>
     <li><a href={{gs.Gold_PDF}}>Gold PDF</a></li>
     <li><a href={{gs.White_PDF}}>White PDF</a></li>
     <li><a href={{gs.ZIP_File}}>Zip Images</a></li>

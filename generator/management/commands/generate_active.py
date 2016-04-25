@@ -38,13 +38,7 @@ def mkdir_p(path):
 
 class Command(BaseCommand):
     help = 'Generates all active goldstandards'
-    # option_list = BaseCommand.option_list + (
-    # make_option(
-    # '-d',
-    # '--draft',
-    #
-    # )
-    # )
+
     def handle(self, *args, **options):
 
         #
@@ -56,8 +50,7 @@ class Command(BaseCommand):
 
 
         JSON_Key_File=config.generator_JSON_key_file
-#        print JSON_Key_File
-#        os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= JSON_Key_File
+
         for Active in ActiveGoldStandard.objects.all():
 
             GS_Title_Date=Active.goldstandard.session_date.strftime('%A, %B %-d, %Y')
@@ -88,14 +81,15 @@ class Command(BaseCommand):
             # individual PNG images of the pages for use on things like
             # Facebook posts and mailing list emails
             #
-            Image_List = gs_tools.pdf_to_png.Convert(Active.goldstandard.get_pdf_name\
-              (Gold_Background = True))
+            Image_List = gs_tools.pdf_to_png.Convert(
+              Active.goldstandard.get_pdf_name(Gold_Background = True))
 
             #
             # Put the images into a zip file and then delete the individual
             # images
             #
-            Zip_Name, Discard = os.path.splitext(Active.goldstandard.get_pdf_name(Gold_Background = True))
+            Zip_Name, Discard = os.path.splitext(
+              Active.goldstandard.get_pdf_name(Gold_Background = True))
             Zip_Name=Zip_Name + ".zip"
             with zipfile.ZipFile(Zip_Name, 'w') as myzip:
                 for Image in Image_List:

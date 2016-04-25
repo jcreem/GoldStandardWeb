@@ -35,15 +35,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        #
-        # Get the list of active Goldstandards and generate each one
-        #
-        #Directory=django_settings.get('generator_output_directory',\
-        #  default='/tmp')
-        #mkdir_p(Directory)
-        #os.chdir(Directory)
-
-
 
         for Active in ActiveGoldStandard.objects.all():
 

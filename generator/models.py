@@ -12,7 +12,7 @@ class GoldStandard(models.Model):
     gen_court_calendar_url = models.URLField(
         'NH General Court Calendar URL',\
         default="http://www.gencourt.state.nh.us/")
-        
+
     gen_court_house = models.CharField(max_length=3,
                                        choices=GEN_COURT_HOUSE_CHOICES,
                                        default=HOUSE)
@@ -46,15 +46,14 @@ class ActiveGoldStandard(models.Model):
     Draft_Number = models.IntegerField(default=1)
     Gold_PDF_Server_Name = models.CharField(
       max_length=180,
-      default='')
+      default='', blank=True)
 
     White_PDF_Server_Name = models.CharField(
       max_length=180,
-      default='')
+      default='', blank=True)
     ZIP_File_Server_Name  = models.CharField(
       max_length=180,
-      default='')
+      default='', blank=True)
 
     def __unicode__(self):
         return self.goldstandard.__unicode__()
-

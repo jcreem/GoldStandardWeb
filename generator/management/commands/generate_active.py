@@ -1,5 +1,10 @@
-from django.core.management.base import BaseCommand, CommandError
 import sys
+import datetime
+import os
+import errno
+import zipfile
+
+from django.core.management.base import BaseCommand, CommandError
 from constance import config
 
 #
@@ -20,11 +25,10 @@ sys.path.append(config.generator_gs_tools_path)
 from generator.models import GoldStandard, ActiveGoldStandard
 from gs_tools import gs_collab_sheet
 from gs_tools.reportlab_goldstandard import generate
-import os
-import errno
+
 
 import gs_tools.pdf_to_png
-import zipfile
+
 
 
 def mkdir_p(path):
@@ -95,6 +99,7 @@ class Command(BaseCommand):
                 for Image in Image_List:
                     myzip.write(Image)
 
+
             for Image_File in Image_List:
                 os.remove(Image_File)
 
@@ -112,6 +117,7 @@ class Command(BaseCommand):
             Active.ZIP_File_Server_Name = Server_Relative_Prefix + '/' + \
                 Zip_Name
 
+            Active.goldstandard.contributors=",".join(str(i) \
+              for i in GS_Info['Contributors'])
+            Active.goldstandard.save()
             Active.save()
-
-            print GS_Info

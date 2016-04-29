@@ -37,16 +37,19 @@ min-height:50px;
 
 
 .gstitle {
-  padding-bottom:80px;
+
+  background-color: rgba(0,0,0,1);
+  color:rgba(255,255,255,1);
 }
 
 .gsicons {
-
+  padding-top:80px;
 }
 
 .gsheet {
   word-wrap: break-word;
   background: url(logo_sheets_64px.png) top no-repeat;
+
   padding-top:70px;
     width:100px;
      display: inline;
@@ -91,7 +94,7 @@ min-height:50px;
 
 .regen {
   word-wrap: break-word;
-  background: url(zip-file-icon.png) top no-repeat;
+  background: url(generate_gs.png) top no-repeat;
     background-size 64px 64px;
   padding-top:70px;
     width:100px;

@@ -1,0 +1,108 @@
+body {font-size: 1em;
+background-color: rgba(241,231,103,1);
+}
+
+
+#container {max-width: 75em; margin: 0 auto; }
+
+#header {
+background: linear-gradient(to right, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+font-family: Copperplate,Copperplate Gothic Light,fantasy;
+font-size: 24px;
+font-style: normal;
+font-variant: normal;
+font-weight: 500;
+line-height: 26.4px;
+min-height:50px;
+
+}
+
+#content {
+    float:left;
+    width:85%;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    background: linear-gradient(to bottom, rgba(224,224,224,1) 0%, rgba(214,214,214,1) 47%, rgba(209,209,209,1) 100%);
+}
+
+#sidebar {
+    float:left;
+    background-color: rgba(241,231,103,1);
+    width:15%;
+}
+
+.goldstandard {
+    background-color: rgba(180,180,180,1);
+      padding-left:20px;
+  }
+
+
+.gstitle {
+  padding-bottom:80px;
+}
+
+.gsicons {
+
+}
+
+.gsheet {
+  word-wrap: break-word;
+  background: url(logo_sheets_64px.png) top no-repeat;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}
+
+.collabemail {
+  word-wrap: break-word;
+  background: url(logo_gmail_64px.png) top no-repeat;
+  padding-top:70px;
+  width:100px;
+
+  display: inline;
+}
+
+.goldpdf {
+  word-wrap: break-word;
+  background: url(Adobe-PDF-Document-icon.png) top no-repeat;
+    background-size 64px 64px;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}
+
+.whitepdf {
+  word-wrap: break-word;
+  background: url(Adobe-PDF-Document-icon.png) top no-repeat;
+    background-size 64px 64px;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}
+
+
+.zipfile {
+  word-wrap: break-word;
+  background: url(zip-file-icon.png) top no-repeat;
+    background-size 64px 64px;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}
+
+.regen {
+  word-wrap: break-word;
+  background: url(zip-file-icon.png) top no-repeat;
+    background-size 64px 64px;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}
+
+.productionemail {
+  word-wrap: break-word;
+  background: url(logo_gmail_64px.png) top no-repeat;
+  background-size 64px 64px;
+  padding-top:70px;
+    width:100px;
+     display: inline;
+}

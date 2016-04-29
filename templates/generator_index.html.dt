@@ -1,27 +1,56 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'generator/style.css' %}" />
+
 <html>
 <title>Gold Standard Generator</title>
-<body>
 
-<b>Currently Active Gold Standards</b>
-<ul>
+<div id="container">
+  <div id="header">
+    <p>
+    New Hampshire Liberty Alliance - Gold Standard Generator
+  </div>
+
+  <div id="sidebar">
+    <p>
+    NHLA<p>
+    <a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">Facebook</a><br>
+    <a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">Facebook Goldstandard</a><br>
+    <p>
+    <a href=http://mailchimp.com/ target="_blank">Mailchimp</a><p>
+
+    <p>
+      <a href=/admin>Admin Interface</a>
+  </div>
 
 
-{% for gs in ActiveStandardList %}
-  <li> {{gs.House}} - {{gs.Date}}
-  <ul>
-    <li><a href={{gs.sheet_url}}>Google Sheet</a></li>
-    <li><a href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank">Email Gold Standard Collaborators</a>
-    <li><a href={{gs.Gold_PDF}}>Gold PDF</a></li>
-    <li><a href={{gs.White_PDF}}>White PDF</a></li>
-    <li><a href={{gs.ZIP_File}}>Zip Images</a></li>
-    <li><a href={{gs.regen_url}}>Regenerate</a></li>
-    <li><a href="mailto:{{gs.printer_email_to}}?cc={{gs.printer_email_cc}}&subject={{gs.printer_email_subject}}&body={{gs.printer_email_body}}" target="_blank">Email Production</a>
-  </ul>
-  </li>
-{% endfor %}
 
-</ul>
+  <div id="content">
+  <b>Currently Active Gold Standards</b>
+  {% for gs in ActiveStandardList %}
+    <div class="goldstandard">
+      <div class="gstitle">
+        {{gs.House}} - {{gs.Date}}<p>
+      </div>
+      <div class="gsicons">
+        <div class="gsheet"><a href="{{gs.sheet_url}}">Sheet</a></div>
+        <div class="collabemail"><a  href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank">Mail GS List</a></div>
+        <div class="goldpdf"><a  href="{{gs.Gold_PDF}}">Gold PDF</a></div>
+        <div class="whitepdf"><a  href="{{gs.White_PDF}}">White PDF</a></div>
+        <div class="zipfile"><a  href="{{gs.ZIP_File}}">Zip Images</a></div>
+        <div class="regen"><a href="{{gs.regen_url}}">Regenerate</a></div>
+        <div class="productionemail"><a  href="mailto:{{gs.printer_email_to}}?cc={{gs.printer_email_cc}}&subject={{gs.printer_email_subject}}&body={{gs.printer_email_body}}" target="_blank">Email Production</a></div>
+      </div>
+    </div>
 
-<a href=/admin>Admin Interface</a>
-</body>
+  {% endfor %}
+
+  </div>
+
+
+<div id="sidebar">
+</div>
+
+
+</div>
 </html>

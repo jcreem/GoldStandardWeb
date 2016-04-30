@@ -35,10 +35,10 @@
       <div class="gsicons">
         <div class="gsheet"><a href="{{gs.sheet_url}}">Sheet</a></div>
         <div class="collabemail"><a  href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank">Mail GS List</a></div>
+        <div class="regen"><a href="{{gs.regen_url}}">Regenerate</a></div>
         <div class="goldpdf"><a  href="{{gs.Gold_PDF}}">Gold PDF</a></div>
         <div class="whitepdf"><a  href="{{gs.White_PDF}}">White PDF</a></div>
         <div class="zipfile"><a  href="{{gs.ZIP_File}}">Zip Images</a></div>
-        <div class="regen"><a href="{{gs.regen_url}}">Regenerate</a></div>
         <div class="productionemail"><a  href="mailto:{{gs.printer_email_to}}?cc={{gs.printer_email_cc}}&subject={{gs.printer_email_subject}}&body={{gs.printer_email_body}}" target="_blank">Email Production</a></div>
       </div>
     </div>

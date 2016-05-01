@@ -11,15 +11,10 @@
   </div>
 
   <div id="sidebar">
-    <p>
-    <p>
     <div class="btn"><a href=http://www.gencourt.state.nh.us/ target-"_blank">Gen Court</a></div>
-    <p>
     <div class="btn"><a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">NHLA FB</a></div>
     <div class="btn"><a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">NHLA FB GS</a></div>
-    <p>
     <div class="btn"><a href=http://mailchimp.com/ target="_blank">Mail Chimp</a></div>
-    <p>
     <div class="btn"><a href=/admin>Admin</a></div>
   </div>
 

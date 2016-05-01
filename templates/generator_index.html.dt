@@ -13,13 +13,14 @@
   <div id="sidebar">
     <p>
     <p>
-    <a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">Facebook</a><br>
-    <a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">Facebook Goldstandard</a><br>
+    <div class="btn"><a href=http://www.gencourt.state.nh.us/ target-"_blank">Gen Court</a></div>
     <p>
-    <a href=http://mailchimp.com/ target="_blank">Mailchimp</a><p>
-
+    <div class="btn"><a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">NHLA FB</a></div>
+    <div class="btn"><a href=https://www.facebook.com/groups/31845266648/?ref=bookmarks target="_blank">NHLA FB GS</a></div>
     <p>
-      <a href=/admin>Admin Interface</a>
+    <div class="btn"><a href=http://mailchimp.com/ target="_blank">Mail Chimp</a></div>
+    <p>
+    <div class="btn"><a href=/admin>Admin</a></div>
   </div>
 
 
@@ -32,14 +33,15 @@
         </div>
         <div class="gsicons">
           <div class="actionicon"><a href="{{gs.sheet_url}}"><img src="{% static 'generator/logo_sheets_64px.png' %}"><br>Sheet</a></div>
-          <div class="actionicon"><a href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank"><img src="{% static 'generator/logo_gmail_64px.png' %}"><br>Mail GS List</a></div>
-          <div class="actionicon"><a href="{{gs.regen_url}}"><img src="{% static 'generator/generate_gs.png' %}"><br>Regenerate</a></div>
-          <div class="actionicon"><a  href="{{gs.Gold_PDF}}"><img src="{% static 'generator/Adobe-PDF-Document-icon.png' %}"><br>Gold PDF</a></div>
-          <div class="actionicon"><a  href="{{gs.White_PDF}}"><img src="{% static 'generator/Adobe-PDF-Document-icon.png' %}"><br>White PDF</a></div>
-          <div class="actionicon"><a  href="{{gs.ZIP_File}}"><img src="{% static 'generator/zip-file-icon.png' %}"><br>Zip Images</a></div>
-          <div class="actionicon"><a  href="mailto:{{gs.printer_email_to}}?cc={{gs.printer_email_cc}}&subject={{gs.printer_email_subject}}&body={{gs.printer_email_body}}" target="_blank"><img src="{% static 'generator/logo_gmail_64px.png' %}"><br>Email Production</a></div>
+          <div class="actionicon"><a href="mailto:{{gs.collab_email_to}}?subject={{gs.collab_email_subject}}&body={{gs.collab_email_body}}" target="_blank"><img src="{% static 'generator/logo_gmail_64px.png' %}">Mail<br>GS List</a></div>
+          <div class="actionicon"><a href="{{gs.regen_url}}"><img src="{% static 'generator/generate_gs.png' %}"><br>Generate</a></div>
+          <div class="actionicon"><a  href="{{gs.Gold_PDF}}"><img src="{% static 'generator/Adobe-PDF-Document-icon.png' %}"><br>Gold<br>PDF</a></div>
+          <div class="actionicon"><a  href="{{gs.White_PDF}}"><img src="{% static 'generator/Adobe-PDF-Document-icon.png' %}"><br>White<br>PDF</a></div>
+          <div class="actionicon"><a  href="{{gs.ZIP_File}}"><img src="{% static 'generator/zip-file-icon.png' %}"><br>Zip<br>Images</a></div>
+          <div class="actionicon"><a  href="mailto:{{gs.printer_email_to}}?cc={{gs.printer_email_cc}}&subject={{gs.printer_email_subject}}&body={{gs.printer_email_body}}" target="_blank"><img src="{% static 'generator/logo_gmail_64px.png' %}">Email Production</a></div>
         </div>
       </div>
+
     {% endfor %}
   </div>
   <p>  <p>  <p>  <p> . <p>

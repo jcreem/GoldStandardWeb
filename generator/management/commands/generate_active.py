@@ -51,6 +51,7 @@ class Command(BaseCommand):
         Directory=config.generator_output_directory
         mkdir_p(Directory)
         os.chdir(Directory)
+        Contributors_Filename = 'contributors.txt'
 
 
         JSON_Key_File=config.generator_JSON_key_file
@@ -88,6 +89,13 @@ class Command(BaseCommand):
             Image_List = gs_tools.pdf_to_png.Convert(
               Active.goldstandard.get_pdf_name(Gold_Background = True))
 
+
+            #
+            # Put the list of contributors in a file
+            #
+            with open (Contributors_Filename, "w") as f:
+                for Sheet_Contributor in GS_Info['Contributors']:
+                    print >> f, Sheet_Contributor + ", "
             #
             # Put the images into a zip file and then delete the individual
             # images
@@ -96,12 +104,15 @@ class Command(BaseCommand):
               Active.goldstandard.get_pdf_name(Gold_Background = True))
             Zip_Name=Zip_Name + ".zip"
             with zipfile.ZipFile(Zip_Name, 'w') as myzip:
+                myzip.write(Contributors_Filename)
                 for Image in Image_List:
                     myzip.write(Image)
 
-
+            os.remove(Contributors_Filename)
             for Image_File in Image_List:
                 os.remove(Image_File)
+
+
 
             #
             # Put the path info (web server relative) into the database

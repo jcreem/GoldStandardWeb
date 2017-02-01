@@ -22,7 +22,8 @@ def index(request):
     """
 
     Num_Copies_Dict={'House' :config.generator_House_GS_Print_Copies, \
-                     'Senate':config.generator_Senate_GS_Print_Copies}
+                     'Senate':config.generator_Senate_GS_Print_Copies, \
+                     'JOINT' :config.generator_House_GS_Print_Copies + config.generator_Senate_GS_Print_Copies}
 
     #
     # Build a list of tuples for the active Gold Standards to be expanded

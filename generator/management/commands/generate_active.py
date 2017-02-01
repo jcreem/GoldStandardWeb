@@ -68,6 +68,7 @@ class Command(BaseCommand):
                 Filename=Active.goldstandard.get_pdf_name(Gold_Background = False),
                 JSON_Key_File=JSON_Key_File,
                 Background_Color=generate.White,
+                Right_Side_Font_Size=Active.Right_Side_Recommend_Font_Size,
                 )
 
 
@@ -79,6 +80,7 @@ class Command(BaseCommand):
                 Filename=Active.goldstandard.get_pdf_name(Gold_Background = True),
                 JSON_Key_File=JSON_Key_File,
                 Background_Color=generate.Gold,
+                Right_Side_Font_Size=Active.Right_Side_Recommend_Font_Size,
                 )
 
             #

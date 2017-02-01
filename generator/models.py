@@ -4,8 +4,10 @@ from django.utils.timezone import utc, now
 class GoldStandard(models.Model):
     HOUSE='Hou'
     SENATE='Sen'
+    JOINT='Jnt'
     GEN_COURT_HOUSE_CHOICES = ((HOUSE,'House'),
-                               (SENATE,'Senate'))
+                               (SENATE,'Senate'),
+                               (JOINT,'JOINT'))
 
     session_date = models.DateField('session date')
     google_sheet_url = models.URLField('google sheet url')
@@ -61,6 +63,9 @@ class ActiveGoldStandard(models.Model):
     ZIP_File_Server_Name  = models.CharField(
       max_length=180,
       default='', blank=True)
+
+    Right_Side_Recommend_Font_Size = models.IntegerField(default=26)
+
 
     def __unicode__(self):
         return self.goldstandard.__unicode__()
